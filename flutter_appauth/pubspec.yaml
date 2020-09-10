@@ -11,6 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_appauth_platform_interface: ^2.0.0
+  flutter_appauth_web:
+    path:
+        ../flutter_appauth_web
 
 flutter:
   plugin:
@@ -20,3 +23,5 @@ flutter:
         pluginClass: FlutterAppauthPlugin
       ios:
         pluginClass: FlutterAppauthPlugin
+      web:
+        default_package: flutter_appauth_web

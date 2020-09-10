@@ -1,4 +1,6 @@
-import 'dart:io' show Platform;
+import 'dart:html';
+// import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_appauth/flutter_appauth.dart';
@@ -31,7 +33,8 @@ class _MyAppState extends State<MyApp> {
 
   // For a list of client IDs, go to https://demo.identityserver.io
   final String _clientId = 'interactive.public';
-  final String _redirectUrl = 'io.identityserver.demo:/oauthredirect';
+  // final String _redirectUrl = 'io.identityserver.demo:/oauthredirect';
+  final String _redirectUrl = window.location.href;//todo what should the redirect be
   final String _issuer = 'https://demo.identityserver.io';
   final String _discoveryUrl =
       'https://demo.identityserver.io/.well-known/openid-configuration';
@@ -79,7 +82,7 @@ class _MyAppState extends State<MyApp> {
                 child: const Text('Sign in with auto code exchange'),
                 onPressed: () => _signInWithAutoCodeExchange(),
               ),
-              if (Platform.isIOS)
+              if (!kIsWeb)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: RaisedButton(
